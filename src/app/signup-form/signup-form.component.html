@@ -2,7 +2,7 @@
   <div *ngIf="form.errors" class="alert alert-danger">
     the username or password is invalid
   </div>
-  <!-- <div formGroupName="account">
+  <div formGroupName="account">
     <div class="form-group">
       <label for="username">Username</label>
       <input
@@ -28,8 +28,8 @@
       </div>
       <p>{{ username }}</p>
     </div>
-  </div> -->
-  <div class="form-group">
+  </div>
+  <!-- <div class="form-group">
     <label for="username">Username</label>
     <input
       formControlName="username"
@@ -51,8 +51,9 @@
       <div *ngIf="username.errors.shouldBeUnique">name must be unique</div>
     </div>
     <p>{{ username }}</p>
-  </div>
-  <div class="form-group">
+  </div> -->
+
+  <!-- <div class="form-group">
     <label for="password">Password</label>
     <input
       formControlName="password"
@@ -60,14 +61,17 @@
       type="text"
       class="form-control"
     />
-  </div>
-  <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-    <!-- password required -->
 
-    <div *ngIf="password.errors.minlength">
-      minLength {{ password.errors.minlength.requiredLength }}
+    <div
+      *ngIf="password.touched && password.invalid"
+      class="alert alert-danger"
+    >
+
+      <div *ngIf="password.errors.minlength">
+        minLength {{ password.errors.minlength.requiredLength }}
+      </div>
+      <div *ngIf="password.errors.required">password is required</div>
     </div>
-    <div *ngIf="password.errors.required">password is required</div>
-  </div>
+  </div> -->
   <button class="btn btn-primary" type="submit">Sign Up</button>
 </form>
