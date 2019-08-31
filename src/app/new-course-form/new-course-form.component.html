@@ -1,4 +1,24 @@
-<p>new-course-form works!</p>
+<h2>
+  <p>new-course-form works!</p>
+</h2>
+<form action="">
+  <input
+    type="text"
+    class="form-control"
+    (keyup.enter)="addTopic(topic)"
+    #topic
+  />
+  <!-- *ngFor="let topic of form.get('topics').controls" -->
+  <ul class="list-group">
+    <li
+      *ngFor="let topic of topics.controls"
+      class="list-group-item"
+      (click)="removeTopic(topic)"
+    >
+      {{ topic.value }}
+    </li>
+  </ul>
+</form>
 <form #f="ngForm" (ngSubmit)="submit(f.value)">
   <div class="form-group">
     <label for="name"> course name </label
