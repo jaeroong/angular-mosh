@@ -1,0 +1,44 @@
+<h2>Template Form</h2>
+<signup-form></signup-form>
+<hr />
+<signup-form></signup-form>
+<hr />
+<app-new-course-form></app-new-course-form>
+<hr />
+<app-contact-form></app-contact-form>
+<hr />
+<h1>angular</h1>
+<h1>{{ post.isFavorite }}</h1>
+<courses></courses>
+<hr />
+<app-zippy title="this is title">
+  shipping details contentsss
+</app-zippy>
+<hr />
+<p>
+  app.component.html:
+  {{ post.isFavorite }}
+</p>
+
+<app-fav title="Shipping Detailsss">
+  Shipping Details Content
+</app-fav>
+<app-fav></app-fav>
+<app-fav
+  isFavorite="post.isFavorite"
+  (change)="onFavoriteChanged($event)"
+></app-fav>
+<app-fav
+  [is-favorite]="post.isFavorite"
+  [isFavorite]="post.isFavorite"
+  (change)="onFavoriteChanged($event)"
+></app-fav>
+
+<hr />
+<app-favorite></app-favorite>
+<app-favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange()">
+</app-favorite>
+<app-favorite
+  [isFavorite]="post.isFavorite"
+  (change)="onFavoriteChange()"
+></app-favorite>

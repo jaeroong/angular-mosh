@@ -1,0 +1,119 @@
+<p>contact-form works!</p>
+<!-- this form has ngModelGroup -->
+<form #fo="ngForm" (ngSubmit)="submit(fo)">
+  <!-- #contact is the template var and can be referenced anywhere
+  useful when you need to validate everything -->
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        required
+        minlength="3"
+        maxlength="10"
+        pattern="banana"
+        ngModel
+        name="firstName"
+        #firstName="ngModel"
+        (change)="log(firstName)"
+        id="firstName"
+        type="text"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      required
+      minlength="3"
+      maxlength="10"
+      pattern="banana"
+      ngModel
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      id="firstName"
+      type="text"
+      class="form-control"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="firstName.touched && !firstName.valid"
+    >
+      <div *ngIf="firstName.errors.required">
+        first name requireddd
+      </div>
+      <div *ngIf="firstName.errors.minlength">
+        first name min length {{ firstName.errors.minlength.requiredLength }}
+      </div>
+      <div *ngIf="firstName.errors.pattern">
+        first name min banana
+      </div>
+      First name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea
+      ngModel
+      name="lastName"
+      #lastName="ngModel"
+      (change)="log(lastName)"
+      id="comment"
+      cols="30"
+      rows="10"
+      type="text"
+      class="form-control"
+    >
+    </textarea>
+  </div>
+  <div class="checkbox">
+    <label for="">
+      <input type="checkbox" ngModel name="isSubscribed" />
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <!-- multiple for multiselection -->
+    <select
+      multiple
+      ngModel
+      name="contactMethod"
+      id="contactMethod"
+      class="form-control"
+    >
+      <!-- <option value=""></option> -->
+      <option value=""></option>
+      <option
+        *ngFor="let method of contactMethods"
+        [ngValue]="method"
+        [value]="method.id"
+        >{{ method.name }}</option
+      >
+    </select>
+  </div>
+  <div class="radio">
+    <label for="">
+      <input ngModel type="radio" name="contactMethod" value="1" />
+      Email
+    </label>
+  </div>
+  <div class="radio">
+    <label for="">
+      <input ngModel type="radio" name="contactMethod" value="2" />
+      phone
+    </label>
+  </div>
+  <hr />
+  <div *ngFor="let method of contactMethods" class="radio">
+    <label for="">
+      <input ngModel type="radio" name="contactMethod" [value]="method.id" />
+      {{ method.name }}
+    </label>
+  </div>
+  <p>{{ f.value | json }}</p>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
